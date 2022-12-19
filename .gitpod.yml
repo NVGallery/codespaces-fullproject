@@ -27,6 +27,7 @@
 
 #workspaceLocation: /workspace
 #workspaceLocation: "."
+checkoutLocation: /workspace
 jetbrains:
   phpstorm:
     prebuilds:
@@ -57,10 +58,12 @@ tasks:
     # change working directory as per configured in `checkoutLocation`
     # which is configured above as `/workspaces/backend`
     init: |
+      
       git clone https://github.com/NVGallery/Frontoffice.git front 
       git clone https://github.com/NVGallery/Core-API.git api
       git clone https://github.com/NVGallery/Backoffice.git back
       
+      ls -l 
       docker network create nv-monitoring-network
       
       cd /workspace/api
