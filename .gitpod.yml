@@ -63,17 +63,17 @@ tasks:
       
       docker network create nv-monitoring-network
       
-      cd /api
+      cd /workspace/api
       docker-compose -f docker-compose.yml -f docker-compose.local.yml build --build-arg APP_ENV=dev
       
-      cd /back/app
+      cd /workspace/back/app
       composer install --prefer-dist --no-scripts  --ignore-platform-reqs
       cd ..
       yarn install
       yarn build
       docker-compose -f docker-compose.yml -f docker-compose.local.yml build --build-arg APP_ENV=dev
      
-      cd ../front/app
+      cd /workspace/front/app
       composer install --prefer-dist --no-scripts  --ignore-platform-reqs
       cd ..
       yarn install
@@ -82,14 +82,14 @@ tasks:
 
 
     command: |
-      cd /api
+      cd /workspace/api
       make docker-up
 
-      cd /back
+      cd /workspace/back
       make docker-up
       make trad-download
 
-      cd /front
+      cd /workspace/front
       make docker-up
 
 #workspaceLocation: /workspace
